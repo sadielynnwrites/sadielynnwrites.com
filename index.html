@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sadie Lynn | Contemporary Romance</title>
+
+    <meta name="description" content="The official website of Sadie Lynn, author of contemporary romance stories about finding your way back to yourself—and finding love along the way.">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@400;500;600&display=swap');
+
+        :root {
+            --sage: #a9b8a5;
+            --deep-sage: #667762;
+            --cream: #f7f3ea;
+            --warm-white: #fcfaf5;
+            --ink: #3d4039;
+            --gold: #b99a62;
+            --soft-green: #dfe5dc;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--cream);
+            color: var(--ink);
+            line-height: 1.7;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 500;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* ---------- NAVIGATION ---------- */
+
+        header {
+            background: var(--warm-white);
+            border-bottom: 1px solid rgba(61, 64, 57, 0.12);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--deep-sage);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            font-size: 0.78rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .nav-links a:hover {
+            color: var(--deep-sage);
+        }
+
+        /* ---------- HERO ---------- */
+
+        .hero {
+            min-height: 82vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 80px 25px;
+            background:
+                radial-gradient(circle at 15% 25%, rgba(255,255,255,.65), transparent 25%),
+                radial-gradient(circle at 85% 70%, rgba(255,255,255,.5), transparent 25%),
+                var(--sage);
+        }
+
+        .hero-inner {
+            max-width: 800px;
+        }
+
+        .eyebrow {
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 0.72rem;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(4rem, 10vw, 7rem);
+            line-height: .9;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            display: block;
+            font-style: italic;
+            color: var(--warm-white);
+        }
+
+        .hero p {
+            max-width: 600px;
+            margin: 0 auto 35px;
+            font-size: 1rem;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 14px 30px;
+            border: 1px solid var(--ink);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.72rem;
+            transition: all .25s ease;
+        }
+
+        .button:hover {
+            background: var(--ink);
+            color: var(--cream);
+        }
+
+        /* ---------- SECTIONS ---------- */
+
+        section {
+            padding: 90px 25px;
+        }
+
+        .section-inner {
+            max-width: 1050px;
+            margin: 0 auto;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 55px;
+        }
+
+        .section-heading h2 {
+            font-size: 3.5rem;
+            line-height: 1;
+            margin-bottom: 12px;
+        }
+
+        .section-heading p {
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        /* ---------- BOOK ---------- */
+
+        .book-section {
+            background: var(--warm-white);
+        }
+
+        .book-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .book-placeholder {
+            aspect-ratio: 2 / 3;
+            max-width: 360px;
+            margin: 0 auto;
+            background: var(--sage);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px;
+            box-shadow: 12px 12px 0 var(--soft-green);
+        }
+
+        .book-placeholder div {
+            border: 1px solid rgba(255,255,255,.7);
+            padding: 35px 20px;
+            color: var(--warm-white);
+        }
+
+        .book-placeholder h3 {
+            font-size: 2.5rem;
+            line-height: 1;
+        }
+
+        .book-copy .eyebrow {
+            color: var(--deep-sage);
+        }
+
+        .book-copy h2 {
+            font-size: 4rem;
+            line-height: .95;
+            margin-bottom: 25px;
+        }
+
+        .book-copy p {
+            margin-bottom: 25px;
+        }
+
+        /* ---------- ABOUT ---------- */
+
+        .about {
+            background: var(--soft-green);
+        }
+
+        .about-inner {
+            max-width: 750px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about h2 {
+            font-size: 4rem;
+            margin-bottom: 25px;
+        }
+
+        .about p {
+            margin-bottom: 18px;
+        }
+
+        /* ---------- NEWSLETTER ---------- */
+
+        .newsletter {
+            background: var(--deep-sage);
+            color: var(--warm-white);
+            text-align: center;
+        }
+
+        .newsletter-inner {
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .newsletter h2 {
+            font-size: 4rem;
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+
+        .newsletter p {
+            margin-bottom: 30px;
+        }
+
+        .newsletter .button {
+            border-color: var(--warm-white);
+        }
+
+        .newsletter .button:hover {
+            background: var(--warm-white);
+            color: var(--deep-sage);
+        }
+
+        /* ---------- FOOTER ---------- */
+
+        footer {
+            background: var(--ink);
+            color: var(--cream);
+            text-align: center;
+            padding: 45px 25px;
+        }
+
+        footer .footer-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+
+        footer p {
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            opacity: .75;
+        }
+
+        /* ---------- MOBILE ---------- */
+
+        @media (max-width: 700px) {
+
+            nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .nav-links {
+                gap: 15px;
+                font-size: 0.65rem;
+            }
+
+            .hero {
+                min-height: 75vh;
+            }
+
+            .book-grid {
+                grid-template-columns: 1fr;
+                gap: 55px;
+            }
+
+            .book-copy {
+                text-align: center;
+            }
+
+            .book-copy h2,
+            .about h2,
+            .newsletter h2 {
+                font-size: 3.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <a href="#" class="logo">Sadie <span>Lynn</span></a>
+
+            <div class="nav-links">
+                <a href="#books">Books</a>
+                <a href="#about">About</a>
+                <a href="#newsletter">Stay Awhile</a>
+            </div>
+        </nav>
+    </header>
+
+
+    <main>
+
+        <section class="hero">
+            <div class="hero-inner">
+
+                <div class="eyebrow">Contemporary Romance</div>
+
+                <h1>
+                    Stories that
+                    <span>find you back.</span>
+                </h1>
+
+                <p>
+                    Romantic stories about the places we come from,
+                    the people who see us clearly, and finding our way
+                    back to ourselves along the way.
+                </p>
+
+                <a href="#books" class="button">Explore the Books</a>
+
+            </div>
+        </section>
+
+
+        <section id="books" class="book-section">
+            <div class="section-inner">
+
+                <div class="section-heading">
+                    <div class="eyebrow">Books</div>
+                    <h2>Come find a story.</h2>
+                    <p>Romance with a little dirt under its fingernails.</p>
+                </div>
+
+                <div class="book-grid">
+
+                    <div class="book-placeholder">
+                        <div>
+                            <div class="eyebrow">A Brookside Romance</div>
+                            <h3>Five Clues<br>to Find You</h3>
+                            <p>Sadie Lynn</p>
+                        </div>
+                    </div>
+
+                    <div class="book-copy">
+
+                        <div class="eyebrow">Coming Soon</div>
+
+                        <h2>Five Clues<br>to Find You</h2>
+
+                        <p>
+                            Five clues. One journey back to herself.
+                            And the man who never stopped looking.
+                        </p>
+
+                        <p>
+                            Wren Calloway has spent years becoming
+                            someone she isn't sure she recognizes.
+                            Then a mysterious envelope appears—and
+                            sends her on a journey through the pieces
+                            of herself she thought she'd left behind.
+                        </p>
+
+                        <a href="#" class="button">Learn More</a>
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <section id="about" class="about">
+            <div class="about-inner">
+
+                <div class="eyebrow">About Sadie</div>
+
+                <h2>Stories with roots.</h2>
+
+                <p>
+                    Sadie Lynn writes contemporary romance about
+                    ordinary people, complicated hearts, and the
+                    quiet moments that change everything.
+                </p>
+
+                <p>
+                    Her stories are about coming home—to a place,
+                    to another person, and sometimes most importantly,
+                    to yourself.
+                </p>
+
+            </div>
+        </section>
+
+
+        <section id="newsletter" class="newsletter">
+            <div class="newsletter-inner">
+
+                <div class="eyebrow">Stay Awhile</div>
+
+                <h2>Come sit on the porch.</h2>
+
+                <p>
+                    Get new-release news, behind-the-scenes notes,
+                    and occasional letters from Sadie Lynn.
+                </p>
+
+                <a href="#" class="button">Join the List</a>
+
+            </div>
+        </section>
+
+    </main>
+
+
+    <footer>
+        <div class="footer-name">Sadie Lynn</div>
+        <p>Romance with Roots · Stories That Find You Back.</p>
+    </footer>
+
+</body>
+</html>
