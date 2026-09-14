@@ -310,7 +310,59 @@
         padding: 70px 7%;
       }
     }
+    /* -------------------------
+       WANDERING BEE
+    ------------------------- */
 
+    .bee {
+      position: fixed;
+      left: -80px;
+      bottom: 18%;
+      width: 38px;
+      height: 28px;
+      font-size: 2rem;
+      z-index: 50;
+      pointer-events: none;
+      animation: bee-flight 18s linear infinite;
+    }
+
+    @keyframes bee-flight {
+      0% {
+        left: -80px;
+        transform: translateY(0) rotate(2deg);
+      }
+
+      18% {
+        transform: translateY(-18px) rotate(-3deg);
+      }
+
+      36% {
+        transform: translateY(8px) rotate(2deg);
+      }
+
+      54% {
+        transform: translateY(-14px) rotate(-2deg);
+      }
+
+      72% {
+        transform: translateY(12px) rotate(3deg);
+      }
+
+      100% {
+        left: calc(100vw + 80px);
+        transform: translateY(-5px) rotate(-2deg);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .bee {
+        animation: none;
+        left: auto;
+        right: 8%;
+        bottom: 10%;
+      }
+    }
+    
   </style>
 </head>
 
@@ -465,6 +517,7 @@
     Romance with Roots · Stories That Find You Back
 
   </footer>
-
+  <div class="bee" aria-hidden="true">🐝</div>
+  
 </body>
 </html>
