@@ -237,6 +237,74 @@
         margin-top: 80px;
       }
     }
+
+            /* -------------------------
+           ILLUSTRATED WANDERING BEE
+        ------------------------- */
+
+        .bee-garden {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 5;
+        }
+
+        .storybook-bee {
+            position: absolute;
+            width: 58px;
+            height: auto;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            transform-origin: center center;
+            will-change: transform, opacity;
+            transition:
+                transform 5s cubic-bezier(0.42, 0, 0.58, 1),
+                opacity 1.5s ease;
+        }
+
+        .storybook-bee .bee-body {
+            fill: #4b463c;
+        }
+
+        .storybook-bee .bee-stripe {
+            fill: #b39a6b;
+        }
+
+        .storybook-bee .bee-wing {
+            fill: rgba(235, 240, 232, 0.78);
+            stroke: rgba(102, 119, 98, 0.42);
+            stroke-width: 1;
+        }
+
+        .storybook-bee .bee-leg,
+        .storybook-bee .bee-antenna {
+            fill: none;
+            stroke: #4b463c;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+        }
+
+        @media (max-width: 760px) {
+            .storybook-bee {
+                width: 42px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .storybook-bee {
+                transition: none;
+                opacity: 0.7;
+                left: auto;
+                right: 12%;
+                top: 18%;
+                transform: rotate(-8deg);
+            }
+        }
+    
   </style>
 </head>
 
@@ -328,5 +396,292 @@
     Romance with Roots · Stories That Find You Back
   </footer>
 
+      <!-- ILLUSTRATED WANDERING BEE -->
+
+    <div class="bee-garden" aria-hidden="true">
+
+        <svg
+            class="storybook-bee"
+            viewBox="0 0 120 90"
+            role="presentation"
+        >
+
+            <!-- Wings -->
+
+            <ellipse
+                class="bee-wing"
+                cx="48"
+                cy="29"
+                rx="25"
+                ry="14"
+                transform="rotate(-25 48 29)"
+            />
+
+            <ellipse
+                class="bee-wing"
+                cx="72"
+                cy="28"
+                rx="25"
+                ry="14"
+                transform="rotate(25 72 28)"
+            />
+
+
+            <!-- Body -->
+
+            <ellipse
+                class="bee-body"
+                cx="60"
+                cy="51"
+                rx="31"
+                ry="19"
+            />
+
+            <!-- Stripes -->
+
+            <path
+                class="bee-stripe"
+                d="M39 39
+                   C47 35 53 34 57 34
+                   L57 69
+                   C51 69 45 67 40 64
+                   Z"
+            />
+
+            <path
+                class="bee-stripe"
+                d="M65 33
+                   C70 34 76 36 81 39
+                   L79 65
+                   C74 68 69 69 65 69
+                   Z"
+            />
+
+
+            <!-- Head -->
+
+            <circle
+                class="bee-body"
+                cx="91"
+                cy="48"
+                r="13"
+            />
+
+
+            <!-- Eye -->
+
+            <circle
+                cx="96"
+                cy="45"
+                r="2"
+                fill="#fcfaf5"
+            />
+
+            <circle
+                cx="97"
+                cy="45"
+                r="0.9"
+                fill="#3d4039"
+            />
+
+
+            <!-- Antennae -->
+
+            <path
+                class="bee-antenna"
+                d="M88 37
+                   C84 27 80 24 75 23"
+            />
+
+            <path
+                class="bee-antenna"
+                d="M95 36
+                   C94 27 97 23 102 21"
+            />
+
+
+            <!-- Legs -->
+
+            <path
+                class="bee-leg"
+                d="M48 66
+                   C44 74 42 77 37 79"
+            />
+
+            <path
+                class="bee-leg"
+                d="M58 69
+                   C56 77 56 80 52 83"
+            />
+
+            <path
+                class="bee-leg"
+                d="M69 68
+                   C72 76 74 79 78 81"
+            />
+
+        </svg>
+
+    </div>
+
+      <script>
+
+        /* -------------------------
+           NATURAL BEE WANDER
+        ------------------------- */
+
+        const bee = document.querySelector('.storybook-bee');
+        const beeGarden = document.querySelector('.bee-garden');
+
+        if (bee && beeGarden) {
+
+            const reducedMotion =
+                window.matchMedia('(prefers-reduced-motion: reduce)');
+
+            let currentX = 0;
+            let currentY = 0;
+
+
+            function randomBetween(min, max) {
+                return Math.random() * (max - min) + min;
+            }
+
+
+            function chooseNewDestination() {
+
+                if (reducedMotion.matches) {
+                    return;
+                }
+
+                const gardenWidth = beeGarden.clientWidth;
+                const gardenHeight = beeGarden.clientHeight;
+
+                const beeWidth = bee.offsetWidth;
+                const beeHeight = bee.offsetHeight;
+
+                const marginX = Math.max(30, gardenWidth * 0.08);
+                const marginY = 130;
+
+                const maxX =
+                    Math.max(
+                        marginX,
+                        gardenWidth - beeWidth - marginX
+                    );
+
+                const maxY =
+                    Math.max(
+                        marginY,
+                        gardenHeight - beeHeight - marginY
+                    );
+
+
+                const newX =
+                    randomBetween(
+                        marginX,
+                        maxX
+                    );
+
+                const newY =
+                    randomBetween(
+                        marginY,
+                        maxY
+                    );
+
+
+                const direction =
+                    newX >= currentX ? 1 : -1;
+
+
+                const rotation =
+                    randomBetween(-8, 8);
+
+
+                const duration =
+                    randomBetween(4.5, 8);
+
+
+                bee.style.transitionDuration =
+                    `${duration}s`;
+
+
+                bee.style.transform =
+                    `translate(${newX}px, ${newY}px)
+                     rotate(${rotation}deg)
+                     scaleX(${direction})`;
+
+
+                bee.style.opacity = '0.88';
+
+
+                currentX = newX;
+                currentY = newY;
+
+
+                setTimeout(() => {
+
+                    bee.style.opacity = '0.5';
+
+                    setTimeout(() => {
+
+                        chooseNewDestination();
+
+                    }, randomBetween(1200, 3200));
+
+                }, duration * 1000);
+
+            }
+
+
+            function startBee() {
+
+                if (reducedMotion.matches) {
+                    bee.style.opacity = '0.7';
+                    return;
+                }
+
+
+                const startX =
+                    randomBetween(
+                        beeGarden.clientWidth * 0.55,
+                        beeGarden.clientWidth * 0.8
+                    );
+
+                const startY =
+                    randomBetween(140, 280);
+
+
+                currentX = startX;
+                currentY = startY;
+
+
+                bee.style.transform =
+                    `translate(${startX}px, ${startY}px)
+                     rotate(-8deg)
+                     scaleX(1)`;
+
+
+                setTimeout(() => {
+                    chooseNewDestination();
+                }, 1200);
+
+            }
+
+
+            startBee();
+
+
+            window.addEventListener(
+                'resize',
+                () => {
+                    if (!reducedMotion.matches) {
+                        chooseNewDestination();
+                    }
+                }
+            );
+
+        }
+
+    </script>
+  
 </body>
 </html>
