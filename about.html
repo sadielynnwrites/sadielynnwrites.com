@@ -374,96 +374,37 @@
         ------------------------- */
 
         .about-vine {
-            position: absolute;
-            left: 2.5%;
-            top: 18%;
-            width: 90px;
-            height: 68%;
-            pointer-events: none;
-            z-index: 0;
-            opacity: 0.55;
-        }
-
-        .about-vine::before {
-            content: "";
-            position: absolute;
-            left: 38px;
-            top: 0;
-            width: 2px;
-            height: 100%;
-            background: var(--deep-sage);
-            border-radius: 50%;
-            transform: rotate(3deg);
-        }
-
-        .about-vine::after {
-            content: "❧";
-            position: absolute;
-            left: 8px;
-            top: 8%;
-            color: var(--deep-sage);
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2rem;
-            transform: rotate(-35deg);
-            opacity: 0.8;
-        }
-
-        .vine-leaf {
-            position: absolute;
-            color: var(--deep-sage);
-            font-size: 1.25rem;
-            font-family: 'Cormorant Garamond', serif;
-        }
-
-        .vine-leaf.one {
-            left: 20px;
-            top: 18%;
-            transform: rotate(-35deg);
-        }
-
-        .vine-leaf.two {
-            left: 45px;
-            top: 30%;
-            transform: rotate(35deg);
-        }
-
-        .vine-leaf.three {
+            position: fixed;
             left: 18px;
-            top: 43%;
-            transform: rotate(-40deg);
+            top: 150px;
+            bottom: 35px;
+            width: 85px;
+            height: auto;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.48;
         }
 
-        .vine-leaf.four {
-            left: 46px;
-            top: 56%;
-            transform: rotate(38deg);
+        .about-vine .stem {
+            fill: none;
+            stroke: var(--deep-sage);
+            stroke-width: 1.8;
+            stroke-linecap: round;
         }
 
-        .vine-leaf.five {
-            left: 17px;
-            top: 69%;
-            transform: rotate(-35deg);
+        .about-vine .leaf {
+            fill: var(--deep-sage);
         }
 
-        .vine-leaf.six {
-            left: 45px;
-            top: 82%;
-            transform: rotate(35deg);
+        .about-vine .bud {
+            fill: var(--sage);
         }
 
         @media (max-width: 760px) {
             .about-vine {
-                left: -12px;
-                width: 55px;
-                opacity: 0.35;
-            }
-
-            .about-vine::before {
-                left: 25px;
-            }
-
-            .vine-leaf {
-                font-size: 1rem;
+                left: 4px;
+                width: 58px;
+                opacity: 0.30;
             }
         }
     
@@ -472,19 +413,67 @@
 
 <body>
 
-      <!-- GROWING VINE -->
+    <!-- GROWING VINE -->
 
-    <div class="about-vine" aria-hidden="true">
+    <svg class="about-vine"
+         viewBox="0 0 85 900"
+         preserveAspectRatio="none"
+         aria-hidden="true">
 
-        <span class="vine-leaf one">❧</span>
-        <span class="vine-leaf two">❧</span>
-        <span class="vine-leaf three">❧</span>
-        <span class="vine-leaf four">❧</span>
-        <span class="vine-leaf five">❧</span>
-        <span class="vine-leaf six">❧</span>
+        <!-- Main wandering stem -->
+        <path class="stem"
+              d="M42 900
+                 C18 820, 60 750, 38 675
+                 C15 600, 62 530, 42 450
+                 C22 370, 58 300, 36 225
+                 C20 170, 48 100, 42 0" />
 
-    </div>
+        <!-- Leaves -->
+        <path class="leaf"
+              d="M39 760
+                 C20 748, 8 755, 4 774
+                 C20 778, 34 772, 39 760Z" />
 
+        <path class="leaf"
+              d="M48 700
+                 C58 680, 73 677, 82 688
+                 C72 704, 59 708, 48 700Z" />
+
+        <path class="leaf"
+              d="M36 610
+                 C18 596, 7 603, 3 620
+                 C18 627, 30 623, 36 610Z" />
+
+        <path class="leaf"
+              d="M50 545
+                 C61 526, 76 524, 83 536
+                 C73 550, 61 554, 50 545Z" />
+
+        <path class="leaf"
+              d="M38 455
+                 C20 441, 8 448, 4 465
+                 C19 471, 31 467, 38 455Z" />
+
+        <path class="leaf"
+              d="M48 380
+                 C59 361, 73 359, 81 370
+                 C71 385, 59 388, 48 380Z" />
+
+        <path class="leaf"
+              d="M35 295
+                 C19 282, 7 288, 3 305
+                 C18 311, 29 307, 35 295Z" />
+
+        <path class="leaf"
+              d="M47 220
+                 C58 202, 72 200, 80 211
+                 C70 225, 58 229, 47 220Z" />
+
+        <!-- Small buds -->
+        <circle class="bud" cx="42" cy="125" r="4" />
+        <circle class="bud" cx="39" cy="835" r="3" />
+
+    </svg>
   
   <!-- HEADER -->
 
