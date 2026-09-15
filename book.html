@@ -538,8 +538,8 @@
         const reduceMotion =
             window.matchMedia('(prefers-reduced-motion: reduce)');
 
-        let currentX = 0;
-        let currentY = 180;
+        let x = 0;
+        let y = 180;
         let timer;
 
 
@@ -548,149 +548,145 @@
         }
 
 
-        function updateGardenSize() {
+        function getPageHeight() {
 
-            const pageHeight =
-                Math.max(
-                    document.body.scrollHeight,
-                    document.documentElement.scrollHeight
-                );
+            return Math.max(
+                document.body.scrollHeight,
+                document.documentElement.scrollHeight
+            );
 
-            beeGarden.style.height = pageHeight + 'px';
         }
 
 
-        function wander() {
+        function moveBee() {
 
             if (reduceMotion.matches) {
                 return;
             }
 
 
-            updateGardenSize();
+            const pageWidth = window.innerWidth;
+            const pageHeight = getPageHeight();
 
-
-            const pageWidth = beeGarden.clientWidth;
-            const pageHeight = beeGarden.clientHeight;
 
             const beeWidth = bee.offsetWidth;
             const beeHeight = bee.offsetHeight;
 
 
-            const paddingX =
-                Math.max(35, pageWidth * 0.08);
+            const padding = 45;
 
-            const minX = paddingX;
+
+            const minX = padding;
 
             const maxX =
                 Math.max(
                     minX,
-                    pageWidth - beeWidth - paddingX
+                    pageWidth - beeWidth - padding
                 );
 
 
-            const minY = 140;
+            const minY = 130;
 
             const maxY =
                 Math.max(
                     minY,
-                    pageHeight - beeHeight - 180
+                    pageHeight - beeHeight - 160
                 );
 
 
             /*
-               Usually the bee makes a nearby trip.
-               Sometimes it takes a longer journey.
+               Sometimes the bee wanders nearby.
+               Sometimes it takes off somewhere
+               completely different.
             */
 
-            const longFlight =
-                Math.random() < 0.25;
+            let newX;
+            let newY;
 
 
-            let targetX;
-            let targetY;
+            if (Math.random() < 0.72) {
 
+                newX =
+                    x + randomBetween(-280, 280);
 
-            if (longFlight) {
-
-                targetX =
-                    randomBetween(minX, maxX);
-
-                targetY =
-                    randomBetween(minY, maxY);
+                newY =
+                    y + randomBetween(-220, 220);
 
             } else {
 
-                targetX =
-                    currentX +
-                    randomBetween(-300, 300);
+                newX =
+                    randomBetween(minX, maxX);
 
-                targetY =
-                    currentY +
-                    randomBetween(-220, 220);
+                newY =
+                    randomBetween(minY, maxY);
 
-
-                targetX =
-                    Math.max(
-                        minX,
-                        Math.min(maxX, targetX)
-                    );
-
-
-                targetY =
-                    Math.max(
-                        minY,
-                        Math.min(maxY, targetY)
-                    );
             }
 
 
-            const direction =
-                targetX >= currentX ? 1 : -1;
+            newX =
+                Math.max(
+                    minX,
+                    Math.min(maxX, newX)
+                );
 
 
-            const rotation =
-                randomBetween(-8, 8);
+            newY =
+                Math.max(
+                    minY,
+                    Math.min(maxY, newY)
+                );
+
+
+            const facing =
+                newX >= x ? 1 : -1;
+
+
+            const tilt =
+                randomBetween(-7, 7);
 
 
             const distance =
                 Math.hypot(
-                    targetX - currentX,
-                    targetY - currentY
+                    newX - x,
+                    newY - y
                 );
 
 
-            const flightTime =
+            const duration =
                 Math.max(
-                    4000,
+                    4,
                     Math.min(
-                        9000,
-                        distance * 18
+                        9,
+                        distance / 65
                     )
                 );
 
 
-            bee.style.transitionDuration =
-                (flightTime / 1000) + 's';
+            bee.style.transition =
+                `left ${duration}s cubic-bezier(0.42, 0, 0.58, 1),
+                 top ${duration}s cubic-bezier(0.42, 0, 0.58, 1),
+                 opacity 1.2s ease,
+                 transform 0.8s ease`;
 
 
             bee.style.opacity = '0.88';
 
 
+            bee.style.left =
+                newX + 'px';
+
+
+            bee.style.top =
+                newY + 'px';
+
+
             bee.style.transform =
-                `translate(${targetX}px, ${targetY}px)
-                 rotate(${rotation}deg)
-                 scaleX(${direction})`;
+                `rotate(${tilt}deg) scaleX(${facing})`;
 
 
-            currentX = targetX;
-            currentY = targetY;
+            x = newX;
+            y = newY;
 
-
-            /*
-               Wait until the flight is finished,
-               then let the bee rest for a while.
-            */
 
             clearTimeout(timer);
 
@@ -702,58 +698,63 @@
 
                 timer = setTimeout(() => {
 
-                    wander();
+                    moveBee();
 
                 }, randomBetween(1800, 4500));
 
-            }, flightTime + 100);
+            }, duration * 1000 + 100);
 
         }
 
 
         function startBee() {
 
-            updateGardenSize();
+            const pageWidth = window.innerWidth;
 
 
-            currentX =
+            x =
                 randomBetween(
-                    beeGarden.clientWidth * 0.55,
-                    beeGarden.clientWidth * 0.78
+                    pageWidth * 0.55,
+                    pageWidth * 0.78
                 );
 
 
-            currentY =
-                randomBetween(160, 280);
+            y =
+                randomBetween(
+                    160,
+                    280
+                );
 
 
             bee.style.transition = 'none';
 
 
+            bee.style.left =
+                x + 'px';
+
+
+            bee.style.top =
+                y + 'px';
+
+
             bee.style.transform =
-                `translate(${currentX}px, ${currentY}px)
-                 rotate(-6deg)
-                 scaleX(1)`;
+                'rotate(-6deg) scaleX(1)';
 
 
             bee.style.opacity = '0';
 
 
-            /*
-               Give the browser one moment to register
-               the starting position before the first flight.
-            */
-
             requestAnimationFrame(() => {
 
                 requestAnimationFrame(() => {
 
-                    bee.style.transition =
-                        'transform 5s cubic-bezier(0.42, 0, 0.58, 1), opacity 1.5s ease';
-
                     bee.style.opacity = '0.88';
 
-                    setTimeout(wander, 1200);
+                    timer =
+                        setTimeout(
+                            moveBee,
+                            1200
+                        );
 
                 });
 
@@ -766,8 +767,8 @@
 
             bee.style.opacity = '0.7';
 
-            bee.style.transform =
-                'translate(70vw, 18%) rotate(-6deg)';
+            bee.style.left = '70vw';
+            bee.style.top = '18%';
 
         } else {
 
@@ -776,30 +777,16 @@
         }
 
 
-        window.addEventListener('resize', () => {
+        window.addEventListener(
+            'resize',
+            () => {
 
-            updateGardenSize();
-
-        });
-
-
-        reduceMotion.addEventListener('change', () => {
-
-            if (reduceMotion.matches) {
-
-                clearTimeout(timer);
-
-                bee.style.transition = 'none';
-
-                bee.style.opacity = '0.7';
-
-            } else {
-
-                startBee();
+                if (!reduceMotion.matches) {
+                    moveBee();
+                }
 
             }
-
-        });
+        );
 
     }
 
