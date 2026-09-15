@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Stay Awhile | Sadie Lynn</title>
+
+  <meta
+    name="description"
+    content="Stay awhile with Sadie Lynn. Join the mailing list for book news, new releases, and stories that find you back."
+  >
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+
+    :root {
+      --sage: #a9b8a5;
+      --deep-sage: #667762;
+      --cream: #f7f3ea;
+      --warm-white: #fcfaf5;
+      --ink: #3d4039;
+      --soft-green: #dfe6dc;
+      --line: #d4dccf;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--warm-white);
+      color: var(--ink);
+      font-family: "Montserrat", sans-serif;
+      line-height: 1.8;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* -------------------------
+       HEADER
+    ------------------------- */
+
+    header {
+      background: var(--cream);
+      border-bottom: 1px solid var(--line);
+      padding: 24px 6%;
+    }
+
+    .nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .logo {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 2rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+
+    .logo img {
+      width: 70px;
+      height: 70px;
+      display: block;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      font-size: 0.75rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .nav-links a {
+      transition: color 0.25s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--deep-sage);
+    }
+
+    /* -------------------------
+       HERO
+    ------------------------- */
+
+    .about-hero {
+      padding: 110px 6% 90px;
+      background: var(--soft-green);
+      text-align: center;
+    }
+
+    .section-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      margin-bottom: 18px;
+      color: var(--deep-sage);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .about-hero h1 {
+      margin: 0 auto 24px;
+      max-width: 800px;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(3.5rem, 8vw, 6rem);
+      font-weight: 500;
+      line-height: 0.95;
+    }
+
+    .about-hero p {
+      max-width: 650px;
+      margin: 0 auto;
+      font-size: 1rem;
+    }
+
+    /* -------------------------
+       ABOUT CONTENT
+    ------------------------- */
+
+    .about-content {
+      padding: 100px 6%;
+      background: var(--warm-white);
+    }
+
+    .about-grid {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .about-side {
+      position: sticky;
+      top: 40px;
+    }
+
+    .about-side h2 {
+      margin: 0;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 3rem;
+      font-weight: 500;
+      line-height: 1;
+    }
+
+    .about-side p {
+      color: var(--deep-sage);
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+    }
+
+    .about-text p {
+      margin-top: 0;
+      margin-bottom: 26px;
+    }
+
+    .about-text p:first-child {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.7rem;
+      line-height: 1.45;
+    }
+
+    /* -------------------------
+       PHILOSOPHY
+    ------------------------- */
+
+    .roots-section {
+      padding: 100px 6%;
+      background: var(--cream);
+      text-align: center;
+    }
+
+    .roots-section h2 {
+      margin: 0 auto 25px;
+      max-width: 700px;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2.8rem, 6vw, 4.5rem);
+      font-weight: 500;
+      line-height: 1;
+    }
+
+    .roots-section p {
+      max-width: 650px;
+      margin: 0 auto 20px;
+    }
+
+    .roots-line {
+      width: 70px;
+      height: 1px;
+      margin: 35px auto;
+      background: var(--deep-sage);
+    }
+
+    /* -------------------------
+       QUOTE
+    ------------------------- */
+
+    .quote-section {
+      padding: 90px 6%;
+      background: var(--deep-sage);
+      color: var(--cream);
+      text-align: center;
+    }
+
+    .quote-section blockquote {
+      max-width: 800px;
+      margin: 0 auto;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.2;
+      font-weight: 500;
+    }
+
+    /* -------------------------
+       BUTTON
+    ------------------------- */
+
+    .button {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 14px 25px;
+      border: 1px solid var(--deep-sage);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      transition: all 0.25s ease;
+    }
+
+    .button:hover {
+      background: var(--deep-sage);
+      color: var(--cream);
+    }
+
+    /* -------------------------
+       FOOTER
+    ------------------------- */
+
+    footer {
+      padding: 35px 6%;
+      background: var(--warm-white);
+      border-top: 1px solid var(--line);
+      text-align: center;
+      color: var(--deep-sage);
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* -------------------------
+       MOBILE
+    ------------------------- */
+
+    @media (max-width: 750px) {
+
+      .nav {
+        flex-direction: column;
+        gap: 18px;
+      }
+
+      .nav-links {
+        gap: 18px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .about-hero {
+        padding: 80px 7% 70px;
+      }
+
+      .about-content {
+        padding: 75px 7%;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 45px;
+      }
+
+      .about-side {
+        position: static;
+      }
+
+      .roots-section {
+        padding: 75px 7%;
+      }
+
+      .quote-section {
+        padding: 70px 7%;
+      }
+    }
+    /* -------------------------
+       WANDERING BEE
+    ------------------------- */
+
+    .bee {
+      position: fixed;
+      left: -80px;
+      bottom: 18%;
+      width: 38px;
+      height: 28px;
+      font-size: 2rem;
+      z-index: 50;
+      pointer-events: none;
+      animation: bee-flight 18s linear infinite;
+    }
+
+    @keyframes bee-flight {
+      0% {
+        left: -80px;
+        transform: translateY(0) rotate(2deg) scaleX(-1);
+      }
+
+      18% {
+        transform: translateY(-18px) rotate(-3deg) scaleX(-1);
+      }
+
+      36% {
+        transform: translateY(8px) rotate(2deg) scaleX(-1);
+      }
+
+      54% {
+        transform: translateY(-14px) rotate(-2deg) scaleX(-1);
+      }
+
+      72% {
+        transform: translateY(12px) rotate(3deg) scaleX(-1);
+      }
+
+      100% {
+        left: calc(100vw + 80px);
+        transform: translateY(-5px) rotate(-2deg) scaleX(-1);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .bee {
+        animation: none;
+        left: auto;
+        right: 8%;
+        bottom: 10%;
+      }
+    }
+    
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+
+  <header>
+    <nav class="nav">
+
+      <a href="index.html" class="logo">
+        <img src="sl-logo.png" alt="Sadie Lynn">
+      </a>
+
+      <div class="nav-links">
+        <a href="book.html">Books</a>
+        <a href="about.html">About</a>
+        <a href="index.html#stay">Stay Awhile</a>
+      </div>
+
+    </nav>
+  </header>
+
+
+  <!-- HERO -->
+
+  <section class="about-hero">
+
+    <div class="section-inner">
+
+      <div class="eyebrow">
+        About Sadie Lynn
+      </div>
+
+      <h1>
+        Stories with roots.
+      </h1>
+
+      <p>
+        Romance about ordinary people, complicated hearts,
+        and the quiet moments that change everything.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- ABOUT -->
+
+  <section class="about-content">
+
+    <div class="about-grid">
+
+      <div class="about-side">
+
+        <div class="eyebrow">
+          Romance with Roots
+        </div>
+
+        <h2>
+          Come stay awhile.
+        </h2>
+
+        <p>
+          There's always room on the porch.
+        </p>
+
+      </div>
+
+
+      <div class="about-text">
+
+        <p>
+          I believe the best love stories aren't only about
+          finding someone. They're about finding your way back
+          to yourself.
+        </p>
+
+        <p>
+          Sadie Lynn writes contemporary romance about people
+          who are figuring things out as they go—people with
+          histories, hopes, bad timing, complicated families,
+          and hearts that don't always cooperate with the plans
+          they've made.
+        </p>
+
+        <p>
+          Her stories are rooted in the places that shape us,
+          the friendships that hold us together, and the small
+          moments that turn out to matter far more than we knew.
+        </p>
+
+        <p>
+          There may be a little dirt under her fingernails
+          and something growing in the garden, but she'll always
+          leave the porch light on for whoever needs it.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ROOTS -->
+
+  <section class="roots-section">
+
+    <div class="section-inner">
+
+      <div class="eyebrow">
+        Stories That Find You Back
+      </div>
+
+      <h2>
+        Because sometimes the way forward
+        starts with remembering who you were.
+      </h2>
+
+      <div class="roots-line"></div>
+
+      <p>
+        These are stories about becoming, belonging,
+        and the people who see something in us before
+        we're ready to see it ourselves.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- QUOTE -->
+
+  <section class="quote-section">
+
+    <blockquote>
+      “The right story doesn't just give you
+      somewhere to go. Sometimes it brings
+      you back to yourself.”
+    </blockquote>
+
+  </section>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    Romance with Roots · Stories That Find You Back
+
+  </footer>
+  <div class="bee" aria-hidden="true">🐝</div>
+  
+</body>
+</html>
