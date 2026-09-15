@@ -368,12 +368,124 @@
         bottom: 10%;
       }
     }
+
+        /* -------------------------
+           GROWING VINE
+        ------------------------- */
+
+        .about-vine {
+            position: absolute;
+            left: 2.5%;
+            top: 18%;
+            width: 90px;
+            height: 68%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.55;
+        }
+
+        .about-vine::before {
+            content: "";
+            position: absolute;
+            left: 38px;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background: var(--deep-sage);
+            border-radius: 50%;
+            transform: rotate(3deg);
+        }
+
+        .about-vine::after {
+            content: "❧";
+            position: absolute;
+            left: 8px;
+            top: 8%;
+            color: var(--deep-sage);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            transform: rotate(-35deg);
+            opacity: 0.8;
+        }
+
+        .vine-leaf {
+            position: absolute;
+            color: var(--deep-sage);
+            font-size: 1.25rem;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .vine-leaf.one {
+            left: 20px;
+            top: 18%;
+            transform: rotate(-35deg);
+        }
+
+        .vine-leaf.two {
+            left: 45px;
+            top: 30%;
+            transform: rotate(35deg);
+        }
+
+        .vine-leaf.three {
+            left: 18px;
+            top: 43%;
+            transform: rotate(-40deg);
+        }
+
+        .vine-leaf.four {
+            left: 46px;
+            top: 56%;
+            transform: rotate(38deg);
+        }
+
+        .vine-leaf.five {
+            left: 17px;
+            top: 69%;
+            transform: rotate(-35deg);
+        }
+
+        .vine-leaf.six {
+            left: 45px;
+            top: 82%;
+            transform: rotate(35deg);
+        }
+
+        @media (max-width: 760px) {
+            .about-vine {
+                left: -12px;
+                width: 55px;
+                opacity: 0.35;
+            }
+
+            .about-vine::before {
+                left: 25px;
+            }
+
+            .vine-leaf {
+                font-size: 1rem;
+            }
+        }
     
   </style>
 </head>
 
 <body>
 
+      <!-- GROWING VINE -->
+
+    <div class="about-vine" aria-hidden="true">
+
+        <span class="vine-leaf one">❧</span>
+        <span class="vine-leaf two">❧</span>
+        <span class="vine-leaf three">❧</span>
+        <span class="vine-leaf four">❧</span>
+        <span class="vine-leaf five">❧</span>
+        <span class="vine-leaf six">❧</span>
+
+    </div>
+
+  
   <!-- HEADER -->
 
   <header>
@@ -523,7 +635,6 @@
     Romance with Roots · Stories That Find You Back
 
   </footer>
-  <div class="bee" aria-hidden="true">🐝</div>
   
 </body>
 </html>
